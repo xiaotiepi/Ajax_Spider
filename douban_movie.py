@@ -27,8 +27,8 @@ def get_page(url):
             results = r.html.html
             return results
         return None
-    except:
-        print('请求异常')
+    except Exception as e:
+        print('请求失败', str(e))
         return None
 
 
@@ -65,7 +65,6 @@ def save_data(douban):
             json.dumps(list(douban), indent=2, ensure_ascii=False))
 
 
-# 以A+的方法写入json在load的时候会报错
 if __name__ == '__main__':
     for start in tqdm(range(0, 101, 20)):
         params = {
